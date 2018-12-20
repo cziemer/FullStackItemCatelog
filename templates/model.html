@@ -1,0 +1,105 @@
+<html>
+	<head>
+		{% include "header.html" %}
+		
+		<div class = 'pane'>
+			<h1>{{ make.name }}</h1><hr>
+
+			{% if models !=[] %}
+				<div>
+					<div class="div-left">
+						{%if 'username' in session %}
+							<a href="{{url_for('newCarModel', carmake_id = make.id)}}" >[New Car Model] </a>
+						{% endif %}
+					</div>
+					<div class="div-right">
+						<a href="{{url_for('showMakes')}}" >[BACK]</a>
+					</div>
+				</div>
+				</br></br>
+
+				<table>
+					<tr><th class="carType" colspan='5'>Coupes</th></tr>
+					<tr>
+						<th>Make</th>
+						<th>MSRP</th>
+						<th>Link</th>
+						{%if 'username' in session %}
+							<th colspan='2'>Modify</th>
+						{% endif %}
+					</tr>
+
+					{% for m in models %}
+						{% if m.carType == 'Coupe' %}
+							<tr>
+								<td>{{m.name}}</td>
+								<td>${{m.msrp}}</td>
+								<td><a href='{{m.url}}' target="_blank">Click Me</a></td>
+								{%if 'username' in session %}
+									{%if session['email'] == m.creator %}
+										<td><a href="{{url_for('editCarModel', carmake_id = make.id, model_id=m.id ) }}" >Edit</a></td>
+										<td><a href="{{url_for('deleteCarModel', carmake_id = make.id, model_id=m.id ) }}" >Delete</a></td>
+									{% endif %}
+								{% endif %}
+							</tr>
+						{% endif %}
+					{% endfor %}
+
+					<tr><th class="carType" colspan='5'>Performance</th></tr>
+					{% for m in models %}
+						{% if m.carType == 'Performance' %}
+							<tr>
+								<td>{{m.name}}</td>
+								<td>${{m.msrp}}</td>
+								<td><a href="{{m.url}}" target="_blank">Click Me</a></td>
+								{%if 'username' in session %}
+									{%if session['email'] == m.creator %}
+										<td><a href="{{url_for('editCarModel', carmake_id = make.id, model_id=m.id ) }}" >Edit</a></td>
+										<td><a href="{{url_for('deleteCarModel', carmake_id = make.id, model_id=m.id ) }}" >Delete</a></td>
+									{% endif %}
+								{% endif %}
+							</tr>
+						{% endif %}
+					{% endfor %}
+
+					<tr><th class="carType" colspan='5'>SUV</th></tr>
+					{% for m in models %}
+						{% if m.carType == 'SUV' %}
+							<tr>
+								<td>{{m.name}}</td>
+								<td>${{m.msrp}}</td>
+								<td><a href='{{m.url}}' target="_blank">Click Me</a></td>
+								{%if 'username' in session %}
+									{%if session['email'] == m.creator %}
+										<td><a href="{{url_for('editCarModel', carmake_id = make.id, model_id=m.id ) }}" >Edit</a></td>
+										<td><a href="{{url_for('deleteCarModel', carmake_id = make.id, model_id=m.id ) }}" >Delete</a></td>
+									{% endif %}
+								{% endif %}
+							</tr>
+						{% endif %}
+					{% endfor %}
+
+					<tr><th class="carType" colspan='5'>Truck</th></tr>
+					{% for m in models %}
+						{% if m.carType == 'Truck' %}
+							<tr>
+								<td>{{m.name}}</td>
+								<td>${{m.msrp}}</td>
+								<td><a href="{{m.url}}" target="_blank">Click Me</a></td>
+								{%if 'username' in session %}
+									{%if session['email'] == m.creator %}
+										<td><a href="{{url_for('editCarModel', carmake_id = make.id, model_id=m.id ) }}" >Edit</a></td>
+										<td><a href="{{url_for('deleteCarModel', carmake_id = make.id, model_id=m.id ) }}" >Delete</a></td>
+									{% endif %}
+								{% endif %}
+							</tr>
+						{% endif %}
+					{% endfor %}	
+				</table>	
+			{% else %}
+				<p> You currently have no models for this make. <p>
+				<a href="{{url_for('newCarModel')}}" > <h3> Create a New Car Model </h3> </a>
+			{% endif %}
+		</div>
+	</body>
+</html>

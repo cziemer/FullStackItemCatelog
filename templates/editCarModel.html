@@ -1,0 +1,50 @@
+<html>
+	<head>
+		{% include "header.html" %}
+			<div class = 'pane'>
+				<h1> Edit Car Model </h1><hr>
+				{%if session['email'] != carmake.creator %}
+					Only the creator of the Car Model can edit it.<br>
+					<a href="{{url_for('newCarModel', carmake_id = carmake_id)}}" >[New Car Model] </a>
+				{% else %}
+				
+					<form action="#" method = 'post'>
+						<p>Name:</p>
+						<input type ='text' size='30' name='name' placeholder = '{{carmake.name }}' required>
+						<p>URL:</p>
+						<input type ='text' size='30' name='url' placeholder = '{{carmake.url}}' required>
+						<p>MSRP:</p>
+						<input type ='text' size='30' name='msrp' placeholder = '{{carmake.msrp}}' required>
+						<p>Car Type:<p>
+						
+						{% if carmake.carType == 'Coupe' %}
+							<dd><input type ='radio' name='carType' value='Coupe'checked  required>Coupe</dd>
+						{%else%}
+							<dd><input type ='radio' name='carType' value='Coupe'  required>Coupe</dd>
+						{% endif %}
+
+						{% if carmake.carType == 'Performance' %}
+							<dd><input type ='radio' name='carType' value='Performance' checked required>Performance</dd>
+						{%else%}
+							<dd><input type ='radio' name='carType' value='Performance' required>Performance</dd>
+						{% endif %}
+
+						{% if carmake.carType == 'SUV'%}
+							<dd><input type ='radio' name='carType' value='SUV'checked  required>SUV</dd>
+						{% else %}
+							<dd><input type ='radio' name='carType' value='SUV' required>SUV</dd>
+						{% endif %}
+
+						{%if carmake.carType =='Truck'%}
+							<dd><input type ='radio' name='carType' value='Truck'checked  required>Truck</dd>
+						{% else %}
+							<dd><input type ='radio' name='carType' value='Truck' required>Truck</dd>
+						{% endif %}
+					
+						<br><input type='submit' value='Edit'>
+					{% endif %}
+					<a href = "{{url_for('showModel', carmake_id=carmake_id)}}" required> [Back] </a>
+				</form>
+		</div>
+	</body>
+</html>

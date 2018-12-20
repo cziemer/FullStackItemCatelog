@@ -1,0 +1,117 @@
+body {
+	font-family: sans-serif;
+	background-color: #000000;
+	color: white;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
+
+input:valid {
+  border: 2px solid black;
+}
+
+table {
+	margin: 10px auto;
+	width: 100%;
+	display: block;
+	border-collapse: collapse;
+}
+
+th {
+	padding: 15px;
+	border: 1px solid #ddd;
+}
+
+th.carType {
+	color: red;
+	text-decoration: underline;
+	border: none;
+}
+
+td {
+	padding: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+/* Header/Logo Title */
+.header {
+	display: table;
+	margin: 0 auto;
+    width: 75%;
+	margin: auto;
+    max-width:980px;
+    border:1px solid salmon;
+    padding-top:10px;
+	position:relative;
+}
+
+.div-left, .div-right {
+	vertical-align: bottom;
+    display: inline-block;
+}
+
+.div-left{
+    float:left;
+    padding-left:10px;
+	
+}
+.div-right{
+    float:right;
+    padding-right:10px;
+}
+
+h1, h2, h3, h4 {
+	color: #999999;
+}
+
+h1, h2 {
+	font-family: 'Georgia', serif;
+	margin: 0;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+p {
+	color: #CCCCCC;
+}
+
+a {
+	text-decoration: none;
+	color:#FFFFCC;
+	font-size: 1.0em;
+}
+
+.pane {
+	left: 25%;
+	border:2px solid salmon;
+    border-radius: 25px;
+	padding: 30px;
+	display: table;
+	margin: 0 auto;
+	background-color: #333333;
+	margin-top: 1em;
+}
+
+
+.name {
+	width:50%;
+	display: inline-block;
+	float: left;
+}
+
+.flash {
+	display: table;
+	margin: 0 auto;
+	margin-top: 1em;
+	padding: 1em;
+}
+
+.message {
+	background-color: BurlyWood;
+	color: black;
+	font-weight: bold;
+}

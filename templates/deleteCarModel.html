@@ -1,0 +1,15 @@
+<html>
+	<head>
+		{% include "header.html" %}
+		<div class = 'pane'>
+			{%if session['email'] != model.creator %}
+				Only the creator of the Car Model can delete it.<br><br>
+			{% else %}
+				<h1> Are you sure you want to delete {{model.name}}? </h1><hr>
+				<form action="#" method = 'post'>
+					<input type='submit', value = 'Delete'>
+				</form>
+			{% endif %}
+			<a href = "{{url_for('showModel', carmake_id=carmake_id)}}"> [Back] </a>
+	</body>
+</html>

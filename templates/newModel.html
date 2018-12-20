@@ -1,0 +1,24 @@
+<html>
+	<head>
+		{% include "header.html" %}
+		<div class = 'pane'>
+			<h1>New Car Model</h1><hr>
+			<form action="#" method = 'post'>
+				<p>Model Name:</p>
+				<input type ='text' size='30' name='name' required>
+				<p>URL:</p>
+				<input type ='text' size='30' name='url' required>
+				<p>MSRP:</p>
+				<input type ='text' size='30' name='msrp' required>
+				<p>Car Type:</p>
+				<input type ='radio'  name='carType' value ='Coupe' required>Coupe</br>
+				<input type ='radio'  name='carType' value ='Performance' required>Performance</br>
+				<input type ='radio' name='carType' value ='SUV' required>SUV</br>
+				<input type ='radio'  name='carType' value ='Truck' required>Truck</br>
+				</br>
+				<input type='submit' value='Create'>  
+				<a href = "{{url_for('showMakes')}}"> [Back] </a>
+			</form>
+		</div>
+	</body>
+</html>

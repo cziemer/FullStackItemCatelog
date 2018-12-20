@@ -1,0 +1,16 @@
+<html>
+	<head>
+		{% include "header.html" %}
+			<div class = 'pane'>
+				{%if session['email'] != carmake.creator %}
+					Only the creator of the Car Make can delete it.<br><br>
+				{% else %}
+					<h1> Are you sure you want to delete {{carmake.name}}? </h1><hr>
+					<form action="#" method = 'post'>
+						<input type='submit', value = 'Delete'>
+					</form>
+				{% endif %}
+				<a href = "{{url_for('showMakes')}}"> [Back] </a>
+			</div>
+	</body>
+</html>

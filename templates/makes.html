@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>Available Car Makes</title>
+		{% include "header.html" %}
+	<!-- header completes head element and begins body -->
+		
+	
+		<div class = 'pane'>
+			<h1>Car Makes</h1><hr>
+			<div>
+				<div class="div-left">
+					{%if 'username' in session %}
+						<a href="{{url_for('newMake')}}" >[New Car Make] </a>
+					{% endif %}
+				</div>
+				<div class="div-right">
+					
+				</div>
+			</div>
+			
+
+			<table border="0">
+				<tr><th>Make</th>
+				{%if 'username' in session %}
+					<th colspan='2'>Modify</th>
+				{% endif %}
+				</tr>
+				{% for carmake in carMakes %}
+					<tr><td><a href = "{{url_for('showModel', carmake_id = carmake.id)}}"> <p>{{carmake.name}}</a></td>
+					{%if 'username' in session %}
+						{%if session['email'] == carmake.creator %}
+							<td><a href = "{{url_for('editMake',carmake_id = carmake.id)}}">[Edit]</a></td>
+							<td><a href = "{{url_for('deleteMake',carmake_id = carmake.id)}}">[Delete]</a></td>
+						{% endif %}
+					{% endif %}
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</body>
+</html>

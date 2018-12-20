@@ -1,0 +1,28 @@
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
+	<div class="header">
+		<div class="div-left">
+			<h1>Car Inventory Catalog</h1>
+		</div>
+		<div class="div-right">
+			{%if 'username' not in session %}
+				<a href="{{ url_for('showLogin') }}">Login to make changes</a>
+			{% else %}
+			Welcome, {{ session['username']}}!
+				<!--<img src="{{ session['picture']}}" alt="profile image">-->
+				<a href = "{{ url_for('gdisconnect') }}">(Logout)</a>
+			{% endif %}
+		</div>
+	</div>
+	<div class="flash">
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<div class="message">
+					{% for message in messages %}
+						{{ message }} <br>
+					{% endfor %}
+				</div>
+			{% endif %}
+		{% endwith %}
+	</div>
